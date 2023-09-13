@@ -1,0 +1,60 @@
+.grid {
+	display: grid;
+	gap: 20px;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: auto;
+	max-width: 355px;
+	position: relative;
+}
+
+.flip-card {
+	height: 145px;
+	width: 105px;
+	position: relative;
+	transform-style: preserve-3d;
+	transform-origin: center right;
+	transition: transform 1s;
+}
+
+.flip-card__face {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	line-height: 260px;
+	color: white;
+	text-align: center;
+	font-weight: bold;
+	font-size: 40px;
+	border-radius: 8px;
+	border: 2px solid black;
+}
+
+.flip-card__back {
+	height: 100%;
+	width: 100%;
+	backface-visibility: hidden;
+	transform: rotateY(180deg);
+	background-image: url('../assets/images/cloud-icon.svg');
+	background-color: #4384d5;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 90%;
+}
+
+.flip-card__front {
+	background-color: transparent;
+	height: 100%;
+	width: 100%;
+	backface-visibility: hidden;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 90%;
+}
+
+.is-hidden {
+	transform: translateX(-100%) rotateY(-180deg);
+}
+
+.founded {
+	pointer-events: none;
+}
