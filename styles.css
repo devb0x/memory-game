@@ -69,3 +69,20 @@
 	border-radius: 8px;
 	padding: 8px;
 }
+
+@media screen and (max-width: 760px) {
+	.grid {
+		gap: 10px;
+	}
+	.flip-card {
+		height: 125px;
+		width: 90px;
+		display: flex;
+		align-items: center;
+		margin-inline: auto;
+		position: relative;
+		transform-style: preserve-3d;
+		transform-origin: center right;
+		transition: transform 1s;
+	}
+}
