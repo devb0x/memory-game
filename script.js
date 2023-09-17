@@ -37,9 +37,10 @@ class Game {
 		this.clearPick = this.clearPick.bind(this)
 	}
 
-
 	gameGenerator(size) {
 		this.gameSize = size
+		this.score = 0
+
 		console.log('game start')
 		/**
 		 * Check if the size is an odd number,
@@ -106,15 +107,27 @@ class Game {
 		/**
 		 * Shuffle the htmlDiv before adding them to the DOM
 		 */
-		// const shuffledDiv = htmlDiv.sort(() => 0.5 - Math.random())
-		//
-		// shuffledDiv.forEach((el) => {
+		const shuffledDiv = htmlDiv.sort(() => 0.5 - Math.random())
+
+		shuffledDiv.forEach((el) => {
+			grid.appendChild(el)
+		})
+
+		/**
+		 * for debug only
+ 		 */
+		// htmlDiv.forEach((el) => {
 		// 	grid.appendChild(el)
 		// })
 
-		// TODO for debug only
-		htmlDiv.forEach((el) => {
-			grid.appendChild(el)
+		const button = document.createElement('button')
+		button.classList.add('btn-new-game')
+		button.innerText = 'New Game'
+		document.body.appendChild(button)
+		button.addEventListener('click', (e) => {
+			e.preventDefault()
+			this.resetGame()
+			this.gameGenerator(12)
 		})
 
 	}
@@ -174,6 +187,15 @@ class Game {
 		if (this.score >= this.gameSize / 2) {
 			console.log('you won')
 		}
+	}
+
+	resetGame() {
+		const oldGame = document.querySelector('#grid-game')
+		const btn = document.querySelector('.btn-new-game')
+		while(oldGame.children[0]) {
+			oldGame.children[0].remove()
+		}
+		btn.remove()
 	}
 
 }
